@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import os
-import random
+import secrets
 
 state = st.session_state
 
@@ -16,7 +16,7 @@ if "annotations" not in state:
 def annotate(label):
     state.annotations[state.current_file] = label
     if state.files:
-        state.current_file = random.choice(state.files)
+        state.current_file = secrets.choice(state.files)
         state.files.remove(state.current_file)
 
 st.header("Dataset annotation")
